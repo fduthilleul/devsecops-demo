@@ -85,7 +85,7 @@
     name: "{{ secret_generate_name }}"
     wait: yes
 
-- name: Patch the CM of Openshift Piplines to enable Tekton Chains
+- name: Patch the CM of Openshift Pipelines to enable Tekton Chains
   command: oc patch configmap chains-config -n {{ tekton_operator_namespace }} -p='{"data":{'\"{{ item.key }}\"':'\"{{ item.value }}\"'}}'
   loop: "{{ tekton_chain_keys | dict2items }}"
 
